@@ -1,22 +1,21 @@
 import requests
 import datetime
 from secrets import api
-name = 'stepsisters'
+name = 'thatbananaking'
 
 
 def uuid(ign):
-    # if ign.lower() == 'thatbananaking':
-    #     ThatBananaKing()
     try:
         data = requests.get(f'https://api.mojang.com/users/profiles/minecraft/{ign}').json()
         return data['id']
     except ValueError:
-        # print('Decoding JSON has failed')
         print('Invalid username \nPlease try again')
         exit()
 
 
 def stats(ign, key):
+    if ign == 'thatbananaking':
+        return ThatBananaKing()
     data = requests.get(f'https://api.hypixel.net/player?key={key}&uuid={uuid(ign)}').json()
     unix_time_first_joined = data['player']['firstLogin']
     normal_time_first_joined = datetime.datetime.fromtimestamp(unix_time_first_joined/1000.0)
@@ -32,10 +31,6 @@ def stats(ign, key):
     status = getStatus(ign, key)
     return f'Rank: {rank} Guild: {current_guild} Status: {status} Friends: {friend} Level: {current_level} Achievement Point: {achievement_points} Karma: {karma} '\
     f'First Join: {normal_time_first_joined} Last Joined: {normal_time_last_joined}'
-
-
-def ThatBananaKing():
-    pass 
 
 
 def getRank(data):
@@ -90,5 +85,9 @@ def getStatus(ign, key):
     else:
         return 'offline'
 
+
+def ThatBananaKing():
+    return 'rank: Banana Guild: Lunar Guard Friends: 45 Level: 420 Achievement Points: 6969 Status: ¯\_(ツ)_/¯'
+    
 
 print(stats(name, api))
