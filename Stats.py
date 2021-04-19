@@ -66,11 +66,10 @@ def getLevel(exp):
 
 def getGuild(ign, key):
     try:
-        data = requests.get(f'https://api.hypixel.net/findGuild?key={key}&byUuid={uuid(ign)}').json()
-        guild = requests.get(f'https://api.hypixel.net/guild?key={key}&id={data["guild"]}').json()
-        return guild['guild']['name']
+        data = requests.get(f'https://api.hypixel.net/guild?key={key}&player={uuid(ign)}')
+        guild = data['guild']['name']
     except KeyError:
-        return f'{ign} is not currently in a guild.'
+        return f'{ign} is not in a guild.'
 
 
 def getFriend(ign, key):
