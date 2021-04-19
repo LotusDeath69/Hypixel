@@ -1,7 +1,7 @@
 import requests
 import datetime
 from secrets import api
-name = 'ThatBananaKing'
+name = 'underappreciated'
 
 
 def uuid(ign):
@@ -35,8 +35,8 @@ def stats(ign, key):
 
 def getRank(data):
     try:
-        if data['player']['monthlyPackageRank'] == 'none':
-            rank = data['player']['newPackageRank']
+        if data['player']['monthlyPackageRank'] == 'NONE':
+            rank =  data['player']['newPackageRank']
     
         else: 
             rank = data['player']['monthlyPackageRank']
