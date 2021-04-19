@@ -1,7 +1,7 @@
 import requests
 import datetime
 from secrets import api
-name = 'thatbananaking'
+name = 'ThatBananaKing'
 
 
 def uuid(ign):
@@ -14,7 +14,7 @@ def uuid(ign):
 
 
 def stats(ign, key):
-    if ign == 'thatbananaking':
+    if ign.lower() == 'thatbananaking':
         return ThatBananaKing()
     data = requests.get(f'https://api.hypixel.net/player?key={key}&uuid={uuid(ign)}').json()
     unix_time_first_joined = data['player']['firstLogin']
