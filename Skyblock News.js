@@ -12,7 +12,9 @@ function Update () {
       if (feed.items[0].title === latest_update) {
       } else {
           loop = false;
-          console.log(feed.items[0].title)
+          console.log(feed.items[0].title) // Title of new update here
+          console.log(feed.items[0].link) // Link of new update here
+          // Ping everyone here       
       }
     }
   })();
